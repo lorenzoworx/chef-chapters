@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Recipe < ApplicationRecord
   # Associations
   belongs_to :user # A recipe belongs to a user (creator)

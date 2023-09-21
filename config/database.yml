@@ -5,20 +5,9 @@ default: &default
   encoding: unicode
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 
-development:
-  <<: *default
-  database: chefchapters
-  username: postgres
-  password: OTMANE123@otmane
-
-test:
-  <<: *default
-  database: chefchapters_test
-  username: postgres
-  password: OTMANE123@otmane
-
 production:
   <<: *default
-  database: chefchapters_production
-  username: chefchapters
-  password: <%= ENV["BLOG_APP_DATABASE_PASSWORD"] %>
+  database: chefchapters_development
+  username: postgres
+  password: <%= ENV["HELLORAILS_DATABASE_PASSWORD"]%>
+
