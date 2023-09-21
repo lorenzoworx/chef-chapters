@@ -10,11 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_21_104217) do
+
+ActiveRecord::Schema[7.0].define(version: 2023_09_20_161750) do
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "foods", id: :bigint, default: -> { "nextval('food_id_seq'::regclass)" }, force: :cascade do |t|
+  create_table "foods", force: :cascade do |t|
     t.string "name"
     t.string "measurement_unit"
     t.integer "price"
@@ -44,10 +46,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_21_104217) do
   create_table "recipe_food", force: :cascade do |t|
     t.integer "quantity"
     t.bigint "recipe_id"
-    t.bigint "food_id"
+    t.bigint "foods_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["food_id"], name: "index_recipe_food_on_food_id"
+    t.index ["foods_id"], name: "index_recipe_food_on_foods_id"
     t.index ["recipe_id"], name: "index_recipe_food_on_recipe_id"
   end
 
@@ -85,7 +87,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_21_104217) do
   add_foreign_key "inventories", "users"
   add_foreign_key "inventory_foods", "foods"
   add_foreign_key "inventory_foods", "inventories"
-  add_foreign_key "recipe_food", "foods"
+  add_foreign_key "recipe_food", "foods", column: "foods_id"
   add_foreign_key "recipe_food", "recipes"
   add_foreign_key "recipes", "users"
 end

@@ -1,0 +1,15 @@
+<%= render partial: "shared/header" %>
+<h1 class="recipe-header"><%= @recipe.name %></h1>
+<div class="recipe-info-container">
+  <div class="recipe-info">
+    <p>Preparation Time: <%= @recipe.preparation_time %> minutes</p>
+    <p>Cooking Time: <%= @recipe.cooking_time %> minutes</p>
+    <p>Description: <%= @recipe.description %></p>
+  </div>
+  <div class="recipe-public-toggle">
+    <%= form_with(model: @recipe, local: true) do |f| %>
+      <%= f.hidden_field :public, value: !@recipe.public %>
+      <%= f.submit @recipe.public? ? "Make Private" : "Make Public", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>
