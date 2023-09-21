@@ -141,7 +141,7 @@ th {
   gap: 8rem;
 }
 
-.recipes-container  {
+.recipes-container {
   display: flex;
   flex-direction: column;
   align-items: center;
