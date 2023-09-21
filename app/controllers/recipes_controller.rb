@@ -1,12 +1,12 @@
 class RecipesController < ApplicationController
   before_action :authenticate_user!
-  before_action :find_recipe, only: [:show, :edit, :update, :destroy]
+  before_action :find_recipe, only: %i[show edit update destroy]
 
   def create
     @recipe = current_user.recipes.build(recipe_params)
 
     if @recipe.save
-      flash[:success] = "Recipe created successfully!"
+      flash[:success] = 'Recipe created successfully!'
       redirect_to @recipe # Redirect to the newly created recipe's show page
     else
       render 'new' # Render the 'new' view template to display validation errors
@@ -17,15 +17,14 @@ class RecipesController < ApplicationController
     @recipes = current_user.recipes
   end
 
-  def show
-  end
+  def show; end
 
   def destroy
     @recipe = Recipe.find(params[:id])
     if @recipe.destroy
-      flash[:success] = "Recipe deleted successfully!"
+      flash[:success] = 'Recipe deleted successfully!'
     else
-      flash[:error] = "An error occurred while deleting the recipe."
+      flash[:error] = 'An error occurred while deleting the recipe.'
     end
     redirect_to recipes_path
   end
@@ -39,7 +38,7 @@ class RecipesController < ApplicationController
   def find_recipe
     @recipe = current_user.recipes.find(params[:id])
   rescue ActiveRecord::RecordNotFound
-    flash[:error] = "Recipe not found."
+    flash[:error] = 'Recipe not found.'
     redirect_to recipes_path
   end
 
