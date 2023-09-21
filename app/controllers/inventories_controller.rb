@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
 class InventoriesController < ApplicationController
-  # before_action :authenticate_user!
+  before_action :authenticate_user!
 
   def index
     @current_user = current_user
-   # @inventories = Inventory.where(user_id: @current_user.id)
+    @inventories = Inventory.where(user_id: @current_user.id)
   end
 
   def show
