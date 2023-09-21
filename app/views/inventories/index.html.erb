@@ -1,4 +1,4 @@
-<%= render partial: "shared/header" %>
+
 <div class="container">
 <h1 class="inventory-title">Inventories</h1>
 <%= form_with model: @inventory, class: "inventory-form", url: '/inventories/create' do |form| %>
@@ -13,5 +13,7 @@
 <div class="separation-bar">
 </div>
 <div class="inventories">
-
+<% @inventories.each do |inventory| %>
+  <%= render partial: "inventories/inventory", object: inventory %>
+<% end %>
 </div>
