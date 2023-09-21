@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class Ability
   include CanCan::Ability
 
@@ -12,7 +10,7 @@ class Ability
 
     # can %i[read update destroy create], Recipe, user: user
     # can %i[read update destroy create], Food, user: user
-    can %i[read update destroy create], Inventory, user: user
+    can(%i[read update destroy create], Inventory, user:)
 
     return unless user.role == 'admin'
 
