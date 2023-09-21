@@ -6,9 +6,10 @@
     <p>Cooking Time: <%= @recipe.cooking_time %> minutes</p>
     <p>Description: <%= @recipe.description %></p>
   </div>
-  <% if @recipe.public %>
-    <p>Public: <span class="is-public">Yes</span></p>
-  <% else %>
-    <p>Public: <span class="is-not-public">No</span></p>
-  <% end %>
+  <div class="recipe-public-toggle">
+    <%= form_with(model: @recipe, local: true) do |f| %>
+      <%= f.hidden_field :public, value: !@recipe.public %>
+      <%= f.submit @recipe.public? ? "Make Private" : "Make Public", class: "btn btn-primary" %>
+    <% end %>
+  </div>
 </div>
