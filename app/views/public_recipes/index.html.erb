@@ -1,0 +1,13 @@
+<!-- app/views/public_recipes/index.html.erb -->
+<%= render partial: "shared/header" %>
+<div class="container">
+  <h1 class="inventory-title">Public Recipes</h1>
+  <ul>
+    <% @public_recipes.each do |recipe| %>
+      <li>
+        <strong>Recipe:</strong> <%= link_to recipe.name, recipe %><br>
+        <strong>By:</strong> <%= link_to recipe.user.name, user_path(recipe.user) %>
+      </li>
+    <% end %>
+  </ul>
+</div>
