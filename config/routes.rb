@@ -1,20 +1,23 @@
 Rails.application.routes.draw do
-  devise_for :users
-
-  get 'home/index'
+  devise_for :users, controllers: { confirmations: 'confirmations' }
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
-  root 'home#index'
-  get '/recipes/my_recipes', to: 'recipes#my_recipes'
-  get '/foods', to: 'foods#index'
-  get '/inventories', to: 'inventories#index'
-  get '/inventories', to: 'inventories#index'
-  post '/inventories/create', to: 'inventories#create'
-  post '/inventories/destroy', to: 'inventories#destroy'
-  post 'inventories/:inventory_id/add', to: 'inventories#add'
-  post 'inventories/:inventory_id/remove/:inv_fod_id', to: 'inventories#remove'
-  get 'inventories/:inventory_id', to: 'inventories#show'
-  get '/inventories/compare/:recipes_id/:inventory_id', to: 'inventories#compare'
-  # Defines the root path route ("/")
-  # root "articles#index"
-end
+  root to: 'recipes#index'
+  
+    resources :recipes, only: [:index, :new, :show, :create, :destroy] do
+      resources :recipe_foods, only: [:create, :destroy]
+      resources :inventory, only: [:create, :destroy]
+    end
+    
+    resources :foods, only: [:index, :new, :create, :destroy]
+    resources :recipe_foods, only: %i[edit update destroy create]
+    resources :inventory, only: [:create, :destroy]
+    get '/inventories', to: 'inventories#index'
+    post '/inventories/create', to: 'inventories#create'
+    post '/inventories/destroy', to: 'inventories#destroy'
+    post 'inventories/:inventory_id/add', to: 'inventories#add'
+    post 'inventories/:inventory_id/remove/:inv_fod_id', to: 'inventories#remove'
+    get 'inventories/:inventory_id', to: 'inventories#show'
+    get '/inventories/compare/:recipes_id/:inventory_id', to: 'inventories#compare'
+    get 'general_shopping_list', to: 'general_shopping_lists#index', as: 'general_shopping_list'
+  end
