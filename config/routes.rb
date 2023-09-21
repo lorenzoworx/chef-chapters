@@ -20,16 +20,11 @@ Rails.application.routes.draw do
     get 'inventories/:inventory_id', to: 'inventories#show'
     get '/inventories/compare/:recipes_id/:inventory_id', to: 'inventories#compare'
     get 'general_shopping_list', to: 'general_shopping_lists#index', as: 'general_shopping_list'
+    get '/my_recipes', to: 'recipes#index', as: 'my_recipes'
+    get '/foods', to: 'foods#index'
+    post '/foods/destroy', to: 'foods#destroy'
+    get '/inventories', to: 'inventories#index'
+    get '/public_recipes', to: 'public_recipes#index'
   end
 
-  get '/my_recipes', to: 'recipes#index', as: 'my_recipes'
-  get '/foods', to: 'foods#index'
-  post '/foods/destroy', to: 'foods#destroy'
-  get '/inventories', to: 'inventories#index'
-  get '/public_recipes', to: 'public_recipes#index'
-
-  resources :recipes
-  resources :foods, only: [:create, :destroy, :new]
-  resources :users, only: [:show]
-end
 
