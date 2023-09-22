@@ -1,10 +1,11 @@
+# frozen_string_literal: true
+
 class FoodsController < ApplicationController
   load_and_authorize_resource
 
   def index
     @current_user = current_user
     @inventories = Food.where(user_id: @current_user.id)
-
   end
 
   def new
@@ -15,9 +16,9 @@ class FoodsController < ApplicationController
   def create
     @food = Food.new(food_params)
     if @food.save
-      redirect_to foods_path 
+      redirect_to foods_path
     else
-      render :new 
+      render :new
     end
   end
 
