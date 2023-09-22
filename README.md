@@ -57,9 +57,13 @@ The project is a repository consisting of the following files:
 </ul>
 
 ###  Key Features <a name="key-features"></a>
-- [x] Create a new app. 
-- [x] ....
-- [x] 
+
+- [x] A login page.
+- [x] A registration page.
+- [x] A food list (with all CRUD implementation, except for 'update').
+- [x] A recipes list (with all CRUD implementation, except for 'update').
+- [x] A general shopping list view (all missing food for all your recipes and total price).
+- [x] A list of all public recipes from other users with their names and total prices.
 - [x] Table and column names match the [ERD](https://github.com/microverseinc/curriculum-rails/blob/main/recipe-app/images/recipe_erd.png) diagram with developed
         
 
