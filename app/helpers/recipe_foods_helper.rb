@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module RecipeFoodsHelper
   def total(ingredients)
     sum = 0.00

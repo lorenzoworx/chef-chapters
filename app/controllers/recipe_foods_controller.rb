@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class RecipeFoodsController < ApplicationController
   def create
     @recipe = Recipe.find_by_id(params[:recipe_id])
