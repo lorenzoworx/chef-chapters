@@ -1,19 +1,16 @@
+<h2 class="display-8 fw-bold my-2 text-center">Your List Of Recipes</h2>
+<div class="m-3">
+    <%= render partial: "_partials/modals/recipe-modal" %><br>
+</div>
 
-<div class="recipes-container">
-<p>
-  <%= link_to "Add recipe", new_recipe_path, class: "btn btn-primary" %>
-</p>
-
-<ul class="recipes">
-  <% @recipes.each do |recipe| %>
-    <li class="recipe-container">
-      <p class="name-remove">
-        <strong><%= link_to recipe.name, recipe %></strong>
-        <%= link_to "Remove", recipe, method: :delete, data: { confirm: "Are you sure you want to delete this recipe?" }, class: "btn btn-danger" %>
-      </p>
-      <p>Description for the recipe: <%= recipe.description %></p>
-    </li>
+<div class="container =">
+  <div class="row">
+    <%if @recipes.empty?%>
+     <p class="m-3 fw-bold">Your recipes list is empty try to add new recipe</p>
+    <%else%>
+      <% @recipes.each do |recipe| %>
+        <%= render "_partials/cards/recipe-card", recipe: recipe %>
+      <% end %>
   <% end %>
-</ul>
 </div>
 
