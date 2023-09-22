@@ -4,10 +4,12 @@ Rails.application.routes.draw do
 
   resources :recipes, only: [:index, :new, :show, :create, :destroy] do
     resources :recipe_foods, only: [:create, :destroy]
+    resources :inventory, only: [:create, :destroy]
   end
   
   resources :foods, only: [:index, :new, :create, :destroy]
   resources :recipe_foods, only: %i[edit update destroy create]
+  resources :inventory, only: [:create, :destroy]
   get '/inventories', to: 'inventories#index'
   post '/inventories/create', to: 'inventories#create'
   post '/inventories/destroy', to: 'inventories#destroy'

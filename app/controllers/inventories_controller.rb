@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class InventoriesController < ApplicationController
-  before_action :authenticate_user!
+
 
   def index
     @current_user = current_user
@@ -11,7 +11,7 @@ class InventoriesController < ApplicationController
   def show
     @current_user = current_user
 
-    @inventory = @current_user.inventories.find(params[:inventory_id])
+    @inventory = Inventory.find(params[:inventory_id])
     @inventory_foods = @inventory.inventory_foods.all
     @already_inside = @inventory_foods.pluck(:food_id)
 
@@ -33,15 +33,15 @@ class InventoriesController < ApplicationController
 
   def add
     @current_user = current_user
-    @inventory = @current_user.inventories.find(params[:inventory_id])
+    @inventory = Inventory.find(params[:inventory_id])
     if can? :update, @inventory
       inv_food = InventoryFood.new
       inv_food.inventory = @inventory
       inv_food.food = Food.find(params[:food])
       inv_food.quantity = params[:quantity]
-      redirect_to(request.env['HTTP_REFERER']) if inv_food.save
+      redirect_to(request.env['HTTP_REFERER']) if inv_food.save notice: 'Food was successfully created.'
     else
-      redirect_to(request.env['HTTP_REFERER'])
+      redirect_to(request.env['HTTP_REFERER']) 
     end
   end
 
