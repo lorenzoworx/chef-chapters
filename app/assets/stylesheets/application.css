@@ -13,20 +13,16 @@
  *= require_tree .
  *= require_self
  */
-body {
-  padding: 0;
-  margin: 0;
-}
-
 .nav {
   height: 47px;
   width: 100%;
-  background-color: skyblue;
   position: relative;
+  background-color: azure;
 }
 
 .nav > .nav-header {
   display: inline;
+  background-color: skyblue;
 }
 
 .nav > .nav-header > .nav-title {
@@ -109,7 +105,6 @@ th {
   font-size: 1.5rem;
   letter-spacing: 1px;
   cursor: pointer;
-  color: #3498db;
   border: 2px solid #3498db;
   box-shadow: 2px 2px 3px #cecece;
   border-radius: 5px;
