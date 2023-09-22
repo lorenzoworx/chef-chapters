@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class RecipeFoodsController < ApplicationController
-  before_action :authenticate_user!
   def create
     @recipe = Recipe.find_by_id(params[:recipe_id])
     @recipe_foods = @recipe.recipe_foods.new(
@@ -13,7 +12,7 @@ class RecipeFoodsController < ApplicationController
         if @recipe_foods.save
           flash[:success] = 'Your new Ingredient Successfully Created'
         else
-          flash[:danger] = 'Failed to create this ingredient '
+          flash[:danger] = "Failed to create this ingredient - #{@recipe_food.errors.full_messages.first}"
         end
         redirect_to recipe_path(params[:recipe_id])
       end
@@ -25,7 +24,7 @@ class RecipeFoodsController < ApplicationController
     if @recipe_foods.destroy
       flash[:notice] = 'Ingredient successfuly removed!'
     else
-      flash[:alert] = 'Failed to remove the ingredient'
+      flash[:alert] = "Failed to remove the ingredient - #{recipe.errors.full_messages.first}"
     end
     redirect_to recipe_path(params[:recipe_id])
   end

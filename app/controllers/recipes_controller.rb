@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class RecipesController < ApplicationController
-  before_action :authenticate_user!
+  load_and_authorize_resource
 
   def index
     @recipes = current_user.recipes.all
