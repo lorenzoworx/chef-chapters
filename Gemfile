@@ -62,7 +62,7 @@ group :development, :test do
   gem 'debug', platforms: %i[mri mingw x64_mingw]
   gem 'rails-controller-testing'
   gem 'rspec-rails'
-
+  gem 'font_awesome5_rails'
   # Capybara, the library that allows us to interact with the browser using Ruby
   gem 'capybara'
 

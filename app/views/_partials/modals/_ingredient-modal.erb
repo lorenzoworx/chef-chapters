@@ -1,5 +1,5 @@
 <%if recipe.user.id = current_user.id%>
-<button type="button" class= "btn btn-success py-3 w-10 my-2 align-self-end" data-bs-toggle="modal" data-bs-target="#recipeModal">
+<button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#recipeModal">
   Add Ingredient
 </button>
 <%end%>
@@ -16,7 +16,7 @@
             <%= form_with url: recipe_recipe_foods_path(@recipe.id), method: :post  do |form| %>
               <div class="form-group">
 		            <label for="food" class="form-label mr-4">Food</label>
-
+		            <%= form.select :food_id, current_user.foods.map { |food| [food.name, food.id]} ,required: true, class: "form-control" %>              </div>
               <div class="mb-3">
 		            <label for="quantity" class="form-label">Quantity</label>
 		            <%= form.text_field :quantity, required: true, class: "form-control"%>

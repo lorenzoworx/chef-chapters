@@ -10,27 +10,51 @@ AllCops:
 
   DisplayCopNames: true
 
+Layout/LineLength:
+  Max: 120
+Metrics/MethodLength:
+  Include:
+    - "app/controllers/*"
+    - "app/models/*"
+  Max: 20
+Metrics/AbcSize:
+  Include:
+    - "app/controllers/*"
+    - "app/models/*"
+  Max: 50
+Metrics/ClassLength:
+  Max: 150
+Metrics/BlockLength:
+  IgnoredMethods: ['describe']
+  Max: 30
+
 Style/Documentation:
   Enabled: false
-Layout/LineLength:
+Style/ClassAndModuleChildren:
   Enabled: false
-Metrics/BlockLength:
+Style/EachForSimpleLoop:
   Enabled: false
-Metrics/PerceivedComplexity:
+Style/AndOr:
   Enabled: false
-Metrics/ParameterLists:
+Style/DefWithParentheses:
   Enabled: false
-Style/GuardClause:
+Style/FrozenStringLiteralComment:
+  EnforcedStyle: never
+
+Layout/HashAlignment:
+  EnforcedColonStyle: key
+Layout/ExtraSpacing:
+  AllowForAlignment: false
+Layout/MultilineMethodCallIndentation:
+  Enabled: true
+  EnforcedStyle: indented
+Lint/RaiseException:
   Enabled: false
-Metrics/ClassLength:
+Lint/StructNewOverride:
   Enabled: false
-Metrics/MethodLength:
-  Max: 150
-Metrics/CyclomaticComplexity:
-  Max: 120
-Metrics/AbcSize:
-  Max: 120
-Metrics/ModuleLength:
-  Max: 120
-Style/GlobalVars:
+Style/HashEachMethods:
+  Enabled: false
+Style/HashTransformKeys:
+  Enabled: false
+Style/HashTransformValues:
   Enabled: false

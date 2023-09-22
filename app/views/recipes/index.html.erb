@@ -1,9 +1,8 @@
-<h2 class="display-8 fw-bold my-2 text-center">Your List Of Recipes</h2>
 <div class="m-3">
     <%= render partial: "_partials/modals/recipe-modal" %><br>
 </div>
-
-<div class="container =">
+<h1 class="m-3">Your List Of Recipes</h1>
+<div class="container">
   <div class="row">
     <%if @recipes.empty?%>
      <p class="m-3 fw-bold">Your recipes list is empty try to add new recipe</p>

@@ -1,21 +1,14 @@
-# frozen_string_literal: true
-
 class Ability
+  # Add in CanCan's ability definition DSL
   include CanCan::Ability
 
   def initialize(user)
-    can :read, :all
-    cannot :read, :inventories
-    cannot :read, :recipes, is_public: false
+    can :read, :all, public: true
 
     return unless user.present?
 
-    # can %i[read update destroy create], Recipe, user: user
-    # can %i[read update destroy create], Food, user: user
-    can(%i[read update destroy create], Inventory, user:)
-
-    return unless user.role == 'admin'
-
-    can :manage, :all
+    can :create, [Recipe, Food, RecipeFood]
+    can :destroy, [Recipe, Food], user: user
+    can :read, :all, public: false, user: user
   end
 end
