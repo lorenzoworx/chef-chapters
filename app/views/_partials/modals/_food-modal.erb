@@ -11,7 +11,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-            <%= form_with scope: :food, url: foods_path, method: :post  do |form| %>
+            <%= form_with model: @food, url: '/foods/create', method: :post  do |form| %>
                 <div class="mb-3">
 		            <label for="name" class="form-label">Name</label>
 		            <%= form.text_field :name, required: true, autofocus: true, class: "form-control", id: "name"%>

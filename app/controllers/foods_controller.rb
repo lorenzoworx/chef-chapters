@@ -13,9 +13,9 @@ class FoodsController < ApplicationController
     @food = Food.new(food_params)
 
     if @food.save
-      redirect_to foods_path
+      redirect_to foods_url, notice: 'Food was successfully created.'
     else
-      render :new
+      flash[:alert] = 'Error: Food is not published'
     end
   end
 

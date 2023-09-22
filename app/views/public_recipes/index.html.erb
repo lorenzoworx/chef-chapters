@@ -1,13 +1,19 @@
-<!-- app/views/public_recipes/index.html.erb -->
-<%= render partial: "shared/header" %>
-<div class="container">
-  <h1 class="inventory-title">Public Recipes</h1>
-  <ul>
-    <% @public_recipes.each do |recipe| %>
-      <li>
-        <strong>Recipe:</strong> <%= link_to recipe.name, recipe %><br>
-        <strong>By:</strong> <%= link_to recipe.user.name, user_path(recipe.user) %>
-      </li>
-    <% end %>
-  </ul>
-</div>
+<h2 class="display-8 fw-bold my-2 text-center">Public Recipes</h2>
+<% @recipes.each do |recipe|%>
+  <div class= 'card m-5'>
+    <div class= 'card-content'>
+      <div class= 'content m-10'>
+          <div class= 'is-flex is-justify-content-space-between p-3'>
+          <div>
+            <p class='has-text-weight-bold is-size-4'><%= recipe.name%></p>
+            <p class='has-text-weight-semibold is-size-5'>By:<%= recipe.user.name%></p>
+          </div>
+          <div class='has-text-weight-semibold is-size-5'>
+            <p>Total food items: <%= @total_items%></p>
+            <p>Total price: $<%= @total_cost %></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<%end%>
