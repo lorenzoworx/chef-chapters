@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 class InventoriesController < ApplicationController
-
-
   def index
     @current_user = current_user
     @inventories = Inventory.where(user_id: @current_user.id)
@@ -41,7 +39,7 @@ class InventoriesController < ApplicationController
       inv_food.quantity = params[:quantity]
       redirect_to(request.env['HTTP_REFERER']) if inv_food.save notice: 'Food was successfully created.'
     else
-      redirect_to(request.env['HTTP_REFERER']) 
+      redirect_to(request.env['HTTP_REFERER'])
     end
   end
 
