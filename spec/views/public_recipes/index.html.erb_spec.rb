@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # spec/features/public_recipes_page_spec.rb
 
 require 'rails_helper'

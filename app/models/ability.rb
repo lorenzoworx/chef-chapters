@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Ability
   # Add in CanCan's ability definition DSL
   include CanCan::Ability
