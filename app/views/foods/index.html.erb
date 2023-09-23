@@ -19,7 +19,9 @@
         <td><%=food.name%></td>
         <td><%=food.measurement_unit%></td>
         <td><%=food.price%></td>
-         <td><%= link_to "Delete", food, method: :delete ,class: "button is-danger is-small is-hover"%></td>
+         <td>
+         <%= button_to "Delete food", food, method: :delete, data: { confirm: 'Are you sure?' } ,class: "button is-danger is-small is-hover" %>
+         </td>
       </tr>
       <% end %>
     </tbody>
