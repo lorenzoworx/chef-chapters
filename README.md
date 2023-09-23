@@ -168,8 +168,8 @@ To set up RSpec in your app and create the Spec folder run:
 
 👤 : **otmaneechchafyky**
 
-- GitHub: [@githubhandle](https://github.com/lorenzoworx)
-- LinkedIn: [LinkedIn](in/oshokeokolo)
+- GitHub: [@githubhandle](https://github.com/otmaneechchafyky)
+- LinkedIn: [LinkedIn](https://www.linkedin.com/in/otmane-echchafyky/)
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
