@@ -28,8 +28,7 @@ class FoodsController < ApplicationController
     redirect_to foods_url, notice: 'Food was successfully destroyed.'
   end
 
-  def show
-  end
+  def show; end
 
   private
 
