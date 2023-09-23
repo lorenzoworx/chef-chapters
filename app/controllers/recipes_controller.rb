@@ -37,6 +37,12 @@ class RecipesController < ApplicationController
     redirect_to recipes_path
   end
 
+  def toggle_public
+    @recipe = Recipe.find(params[:id])
+    @recipe.toggle_public_status
+    redirect_to @recipe, notice: "Recipe updated successfully."
+  end
+
   private
 
   def recipe_params

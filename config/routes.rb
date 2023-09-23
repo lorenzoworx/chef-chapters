@@ -19,4 +19,5 @@ Rails.application.routes.draw do
   get '/inventories/compare/:recipes_id/:inventory_id', to: 'inventories#compare'
   get '/public_recipes', to: 'public_recipes#index'
   get 'general_shopping_list', to: 'general_shopping_lists#index', as: 'general_shopping_list'
+  put '/recipes/:id/toggle_public', to: 'recipes#toggle_public', as: 'recipe_toggle_public'
 end
