@@ -1,0 +1,29 @@
+
+<div class="container">
+<h1 class="inventory-title"><%= @inventory.name %></h1>
+<p class="inventory-description dont-overflow"><%= @inventory.description %></p>
+<% if(@food_options.length > 0) %>
+<div class="m-3">
+    <%= render partial: "_partials/modals/inventory-detail-modal" %><br>
+</div>
+  <% else %>
+  <h3 class="">There is not food to add </h3>
+  <% end %>
+  <div class="separation-bar">
+  <% if(@inventory_foods.length > 0) %>
+  <table>
+  <thead>
+    <tr>
+      <th>Food</th>
+      <th>Quantity</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+<% @inventory.inventory_foods.each do | inventory_food | %>
+  <%= render partial: "inventories/inventory_food", object: inventory_food %>
+<% end %>
+  </tbody>
+</table>
+<% end %>
+</div>

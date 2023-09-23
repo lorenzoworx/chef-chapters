@@ -1,0 +1,39 @@
+
+
+<button type="button" class="btn btn-warning mx-6" data-bs-toggle="modal" data-bs-target="#inventoryModal">
+  Add New Inventory
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="inventoryModal" tabindex="-1" aria-labelledby="recipeModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="recipeModalLabel">Add Food</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+            <%= form_with model: @inventory_food, url: "/inventories/#{@inventory.id}/add", method: :post  do |form| %>
+                <div class="mb-3">
+		            <label for="name" class="form-label">Food</label>
+		            <%= form.collection_select :food, @food_options ,:id , :name %>
+	            </div>
+	            <div class="mb-3"
+                    <label for="description" class="form-label">Quantity</label>
+		           <%= form.number_field :quantity, min: 1, value: 1 %>
+              <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+	            </div>    
+                
+                <br>
+	            <div class="text-end mt-3">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <%= form.submit 'Save ', class: "btn btn-success" %>
+            <% end %>
+          </div>   
+      </div>
+      </div>
+    </div>
+  </div>
+</div>
+<br>

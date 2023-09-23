@@ -1,0 +1,13 @@
+
+<div class="m-3">
+    <%= render partial: "_partials/modals/inventory-modal " %><br>
+</div>
+<div class="container">
+<h2 class="display-8 fw-bold  text-center">Your Inventories</h2>
+<div class="separation-bar">
+</div>
+<div class="inventories">
+<% @inventories.each do |inventory| %>
+  <%= render partial: "inventories/inventory", object: inventory %>
+<% end %>
+</div>
